@@ -1,0 +1,67 @@
+﻿@page "/learnBlazor/bindprop"
+
+<h1>Bind Properties Demo</h1>
+<h3>One way data binding</h3>
+<table class="table">
+    <tbody>
+        <tr>
+            <td>
+                Id
+            </td>
+            <td>
+                @product.Id
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                @product.Name
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Product is
+            </td>
+            <td>
+                @(product.IsActive ? "Active" : "Inactive")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                IsActive
+            </td>
+            <td>
+                <input type="checkbox" @bind="@product.IsActive" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Price
+            </td>
+            <td>
+                @product.Price
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Two way data binding</h3>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td>
+                Price
+            </td>
+            <td>
+                <input type="number" @bind="@product.Price" @bind:event="oninput" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    Models.Product product = new() { Id = 1, Name = "Product 1", IsActive = false, Price = 100 };
+}
